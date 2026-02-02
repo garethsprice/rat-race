@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rat Race - After Dark Screensaver</title>
+    <link rel="stylesheet" href="/src/styles/main.css">
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <div class="controls" id="controls">
+        <button onclick="window.game?.addRat()">Add Rat</button>
+        <button onclick="window.game?.removeRat()">Remove Rat</button>
+        <button onclick="window.game?.toggleDebug()" id="debugBtn">Debug: OFF</button>
+    </div>
+
+    <div class="rat-names" id="ratNames"></div>
+    <div class="music-toggle" id="musicToggle">🔇 Music</div>
+
+    <div class="debug-controls hidden" id="debugControls">
+        <label>Animation FPS: <span class="value" id="fpsValue">60</span></label>
+        <input type="range" id="fpsSlider" min="1" max="60" value="60">
+        <label>Speed Multiplier: <span class="value" id="speedValue">0.125</span></label>
+        <input type="range" id="speedSlider" min="1" max="100" value="12.5">
+        <label>Rat Speed: <span class="value" id="ratSpeedValue">0.00015</span></label>
+        <input type="range" id="ratSpeedSlider" min="1" max="100" value="15">
+        <label style="margin-top: 10px; cursor: pointer;">
+            <input type="checkbox" id="overlayToggle"> Show reference overlay (O)
+        </label>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
