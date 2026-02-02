@@ -133,10 +133,15 @@ export class MusicManager {
     }
   }
 
+  private getAssetPath(path: string): string {
+    const base = import.meta.env.BASE_URL;
+    return `${base}${path}`;
+  }
+
   startIntro(): void {
     if (!this.enabled || this.state === 'intro') return;
     this.state = 'intro';
-    this.playMidi('/music/TellIntr.mid', false, () => {
+    this.playMidi(this.getAssetPath('music/TellIntr.mid'), false, () => {
       if (this.enabled && (this.state === 'intro' || this.state === 'loop')) {
         this.startLoop();
       }
@@ -146,14 +151,14 @@ export class MusicManager {
   startLoop(): void {
     if (!this.enabled) return;
     this.state = 'loop';
-    this.playMidi('/music/TellLoop.mid', true);
+    this.playMidi(this.getAssetPath('music/TellLoop.mid'), true);
   }
 
   startEnd(): void {
     if (!this.enabled || this.state === 'end' || this.state === 'finished')
       return;
     this.state = 'end';
-    this.playMidi('/music/TellEnd.mid', false, () => {
+    this.playMidi(this.getAssetPath('music/TellEnd.mid'), false, () => {
       this.state = 'finished';
     });
   }

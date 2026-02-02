@@ -97,6 +97,28 @@ rat-race/
 - **M key** - Toggle music on/off
 - **O key** - Toggle reference overlay (debug)
 
+## Deployment
+
+### GitHub Pages
+
+The project includes a GitHub Actions workflow that automatically builds and deploys to GitHub Pages on every push to `main` or `master`.
+
+**Setup:**
+1. Go to your repository Settings → Pages
+2. Under "Build and deployment", select "GitHub Actions" as the source
+3. Push to main/master branch to trigger deployment
+
+The site will be available at `https://[username].github.io/scratchpad/`
+
+### Manual Deployment
+
+```bash
+# Build for GitHub Pages
+GITHUB_PAGES=true npm run build
+
+# The dist/ folder can be deployed to any static hosting
+```
+
 ## Credits
 
 Original "After Dark" screensaver by Berkeley Systems.

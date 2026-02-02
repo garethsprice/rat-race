@@ -25,6 +25,7 @@ export class SpriteManager {
   }
 
   async load(): Promise<void> {
+    const base = import.meta.env.BASE_URL;
     const loadImage = (src: string): Promise<HTMLImageElement> =>
       new Promise((resolve, reject) => {
         const img = new Image();
@@ -34,9 +35,9 @@ export class SpriteManager {
       });
 
     const [metaResponse, sheetImage, vestMaskImage] = await Promise.all([
-      fetch('/sprites/spritesheet_meta.json'),
-      loadImage('/sprites/spritesheet_grey.png'),
-      loadImage('/sprites/spritesheet_vest_mask.png'),
+      fetch(`${base}sprites/spritesheet_meta.json`),
+      loadImage(`${base}sprites/spritesheet_grey.png`),
+      loadImage(`${base}sprites/spritesheet_vest_mask.png`),
     ]);
 
     this.meta = await metaResponse.json();

@@ -14,6 +14,7 @@ export class Track {
   }
 
   async loadTextures(): Promise<void> {
+    const base = import.meta.env.BASE_URL;
     const loadImage = (src: string): Promise<HTMLImageElement> =>
       new Promise((resolve, reject) => {
         const img = new Image();
@@ -23,8 +24,8 @@ export class Track {
       });
 
     const [grassTexture, trackTexture] = await Promise.all([
-      loadImage('/textures/SICT_1100_rgb.png'),
-      loadImage('/textures/SICT_1101_rgb.png'),
+      loadImage(`${base}textures/SICT_1100_rgb.png`),
+      loadImage(`${base}textures/SICT_1101_rgb.png`),
     ]);
 
     this.grassPattern = this.ctx.createPattern(grassTexture, 'repeat');
